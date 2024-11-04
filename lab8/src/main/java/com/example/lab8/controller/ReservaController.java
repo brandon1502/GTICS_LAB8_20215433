@@ -51,7 +51,6 @@ public class ReservaController {
         // Si tod0 es correcto
         evento.setReservasactuales(evento.getReservasactuales() + reserva.getNumero_cupos());
         eventoRepository.save(evento);
-
         reserva.setEvento(evento);
         reservaRepository.save(reserva);
 
@@ -86,11 +85,9 @@ public class ReservaController {
 
         evento.setReservasactuales(nuevasReservasActuales);
         eventoRepository.save(evento);
-
-        // Eliminar la reserva
         reservaRepository.delete(reserva);
 
-        // Respuesta exitosa
+
         responseJson.put("result", "ok");
         responseJson.put("estado", "Reserva cancelada con éxito");
         responseJson.put("eventoId", evento.getId());
